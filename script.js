@@ -1,21 +1,12 @@
-function scrollDaySection(direction) {
-  const container = document.querySelector(".days-scroll");
-  const dayWidth = container.querySelector(".day").offsetWidth + 20;
-  container.scrollBy({
-    left: direction * dayWidth,
-    behavior: "smooth",
-  });
-}
+window.onload = () => {
+  const subtitle = document.querySelector(".subtitle");
 
-document.querySelectorAll(".read-more").forEach((button) => {
-  button.addEventListener("click", () => {
-    const day = button.closest(".day");
-    day.classList.toggle("expanded");
+  const frames = ["Rebranding.", "Rebranding..", "Rebranding..."];
 
-    if (day.classList.contains("expanded")) {
-      button.textContent = "Read Less";
-    } else {
-      button.textContent = "Read More";
-    }
-  });
-});
+  let idx = 0;
+
+  setInterval(() => {
+    subtitle.textContent = frames[idx];
+    idx = (idx + 1) % frames.length;
+  }, 500);
+};
